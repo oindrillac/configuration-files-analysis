@@ -71,9 +71,20 @@ We used a publicly available dataset of 256 MySQL configuration files to train t
 
 MySQL configuration file has a key *‘socket’ *which expects a value as a full directory and file name, i.e., location for socket file that the server uses for communication with local clients [[7](https://dev.mysql.com/doc/refman/8.0/en/problems-with-mysql-sock.html)]. A user assigned incorrect values to the key *socket* while editing the configuration file, in table 1, we demonstrated the detected error. 
 
-| Correct Format                      | Incorrect format | Error Message                                                                                                 |
-|-------------------------------------|------------------|---------------------------------------------------------------------------------------------------------------|
-| socket= '/var/lib/mysql/mysql.sock’ | socket=‘MySql’   | TypeError: Data type of key ‘log_file’ should be ‘filename or filepath+filename' but it’s given as 'filepath' |
+<table>
+	<tbody>
+		<tr>
+			<td>&nbsp;Correct Format</td>
+			<td>Incorrect format&nbsp;</td>
+			<td>&nbsp;Error Message</td>
+		</tr>
+		<tr>
+			<td>&nbsp;socket= '/var/lib/mysql/mysql.sock&rsquo;</td>
+			<td>&nbsp;socket=&lsquo;MySql&rsquo;</td>
+			<td>&nbsp;TypeError: Data type of key &lsquo;log_file&rsquo; should be &lsquo;filename or filepath+filename' but it&rsquo;s given as 'filepath'</td>
+		</tr>
+	</tbody>
+</table>
 
 Table 1. Example of data type error detection 
 
