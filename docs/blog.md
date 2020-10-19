@@ -71,29 +71,19 @@ We used a publicly available dataset of 256 MySQL configuration files to train t
 
 MySQL configuration file has a key *‘socket’ *which expects a value as a full directory and file name, i.e., location for socket file that the server uses for communication with local clients [[7](https://dev.mysql.com/doc/refman/8.0/en/problems-with-mysql-sock.html)]. A user assigned incorrect values to the key *socket* while editing the configuration file, in table 1, we demonstrated the detected error. 
 
-<table>
-  <thead>
-  <tr>
-    <th colspan="1" rowspan="1"><p>Correct Format</p></th>
-    <th colspan="1" rowspan="1"><p>Incorrect format</p></th>
-    <th colspan="2" rowspan="1"><p>Error Message </p></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td colspan="1" rowspan="1"><p>socket= '/var/lib/mysql/mysql.sock’</p></td>
-    <td colspan="1" rowspan="1"><p>socket=‘MySql’</p></td>
-    <td colspan="2" rowspan="1"><p>TypeError: Data type of key ‘log_file’ should be ‘filename or filepath+filename' but it’s given as 'filepath'</p></td>
-  </tr>
-  </tbody>
-</table>
-
++-------------------------------------+------------------+---------------------------------------------------------------------------------------------+
+| Correct Format                      | Incorrect format | Error Message                                                                               |
++=====================================+==================+=============================================================================================+
+| socket= '/var/lib/mysql/mysql.sock’ | socket=‘MySql’   | TypeError: Data type of key ‘log_file’ should be ‘filename or filepath+filename'            |
+|                                     |                  |  but it’s given as 'filepath'                                                               |
++-------------------------------------+------------------+---------------------------------------------------------------------------------------------+
 
 Table 1. Example of data type error detection 
 
 ### Spelling error detection 
 
 One of the most misconfigured MySQL performance features is 'query_cache_size' [[8](https://haydenjames.io/mysql-query-cache-size-performance/)]. 'query_cache_size' system variable is used for query caching, and it can significantly improve the performance of the MySQL systems. A user assigned 20M memory to 'query_cache_size' to improve the performance but misspelled key as 'query-cache-size' resulting in a default 1M memory assignment causing poor performance. In table 2, we demonstrated the detected error. 
+
 
 <table>
   <tr>
